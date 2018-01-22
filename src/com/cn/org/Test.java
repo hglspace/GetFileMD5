@@ -8,23 +8,26 @@ import java.security.MessageDigest;
 public class Test {
 
 	public static void main(String[] args) {
-		String filePath="/Users/test/Applications/error.txt";
+		String filePath="/Users/zyq/Applications/error.txt";
 		System.out.println(fileMD5(filePath));
+		//B07957B43B5D4C708A3B540B1A2E5423
 	}
 	public static String fileMD5(String filePath){
-		int bufferSize=1024*1024;//设置缓冲区大小
+		int bufferSize=10;//设置缓冲区大小
 		FileInputStream fis = null;
-		DigestInputStream dis = null;
+		DigestInputStream dis = null;//针对所有通过该流的数据计算出相应的消息摘要
 		try{
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			fis = new FileInputStream(filePath);
 			dis = new DigestInputStream(fis,md);
 			byte[] buffer = new byte[bufferSize];
-			while(dis.read(buffer)>0){//read的过程对文件进行MD5处理
-				md = dis.getMessageDigest();//获取最终的MessageDigest对象
-				byte[] resultByteArray = md.digest();//这个数组的长度是16
-				return byteArrayToHex(resultByteArray);
+			byte[] resultByteArray=null;
+			int len=0;
+			while((len=dis.read(buffer))>0){//read的过程对文件进行MD5处理
 			}
+			md = dis.getMessageDigest();//获取最终的MessageDigest对象
+			resultByteArray= md.digest();//这个数组的长度是16
+			return byteArrayToHex(resultByteArray);
 		}catch(Exception e){
 			
 		}finally{
