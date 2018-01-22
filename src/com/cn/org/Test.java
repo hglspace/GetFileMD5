@@ -1,4 +1,4 @@
-package com.bank.xy;
+package com.cn.org;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 public class Test {
 
 	public static void main(String[] args) {
-		String filePath="/Users/zyq/Applications/error.txt";
+		String filePath="/Users/test/Applications/error.txt";
 		System.out.println(fileMD5(filePath));
 	}
 	public static String fileMD5(String filePath){
